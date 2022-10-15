@@ -2,7 +2,7 @@ use actix_web::{get, HttpResponse, Responder, web};
 use rand::Rng;
 
 #[get("/roll")]
-async fn roll() -> impl Responder {
+pub(crate) async fn roll() -> impl Responder {
     let mut rng = rand::thread_rng();
     let result: u8 = rng.gen_range(1..10);
 
@@ -10,7 +10,7 @@ async fn roll() -> impl Responder {
 }
 
 #[get("/roll/{dice}")]
-async fn roll_dice(path: web::Path<String>) -> impl Responder {
+pub(crate) async fn roll_dice(path: web::Path<String>) -> impl Responder {
     let mut rng = rand::thread_rng();
     let dice = path.into_inner();
 
