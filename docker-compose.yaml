@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   api-roll:
-    build: ./api-roll/Dockerfile
+    build: ./api-roll
     image: api-roll
     ports:
       - "8080:8080"
