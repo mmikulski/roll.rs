@@ -2,7 +2,7 @@ use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 
 mod roller;
 
-use crate::roller::roll;
+use crate::roller::{roll, roll_dice};
 
 #[get("/")]
 async fn hello() -> impl Responder {
@@ -25,6 +25,7 @@ async fn main() -> std::io::Result<()> {
 	  .service(hello)
 	  .service(echo)
       .service(roll)
+      .service(roll_dice)
 	  .route("/hey", web::get().to(manual_hello))
     })
     .bind(("127.0.0.1", 8080))?
